@@ -66,12 +66,11 @@ curl http://localhost:<puerto-contenedor> #mirar con docker ps
 ```
 ## 4) Generar tráfico:
 ```
-docker run --rm --network el-lido curlimages/curl -s https://svc-andrey:8080/ # Todos los contenedores van a escuchar por este puerto
+docker run --rm --network el-lido curlimages/curl -s http://svc-andrey:8080/ # Todos los contenedores van a escuchar por este puerto
 ```
 ## 5) Ver últimas 20 líneas del log:
 ```
-docker run --rm -v biblioteca-del-pueblo:/data alpine \                      
-  sh -c "tail -n 20 /data/visitas.log" 
+docker run --rm -v biblioteca-del-pueblo:/data alpine sh -c "tail -n 20 /data/visitas.log" 
 ```
 ### Para entrar al volumen:
 ```
@@ -80,4 +79,8 @@ docker run --rm -it -v biblioteca-del-pueblo:/data alpine sh
 ### Para revisar la carpeta data:
 ```
 ls -l /data
+```
+### Para ver logs en una terminal:
+```
+docker run --rm -v biblioteca-del-pueblo:/data alpine sh -c "tail -f /data/visitas.log"
 ```
